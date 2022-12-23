@@ -1,0 +1,198 @@
+---
+title: "2022 - MSc - Data Analytics for Immersive Environments - RDBMS Project"
+author: "Niall McGuinness"
+date: "December 2022"
+output:
+  html_document:
+    toc: TRUE
+    number_sections: FALSE
+    toc_float: TRUE
+    df_print: paged
+    fig_caption: TRUE
+    code_folding: hide
+    theme: cerulean
+  pdf_document:
+    toc: TRUE
+  word_document:
+    toc: TRUE
+subtitle: 'Database design, SQL, and Linear Regression'
+---
+
+<style>
+body {
+text-align: justify}
+</style>
+
+## Learning Outcomes
+
+To practice the following:
+
+* Formulation of an experiment hypothesis.
+* Application of appropriate statistical tests.
+* Descriptive and inferential analysis of  data.
+* Generation of descriptive statistics.
+* Report generation in R Markdown and R Notebook.
+* Use of R language and RStudio.
+
+## Part A - Database Design & SQL Querying [75 Marks]
+
+### Overview
+
+*"Relational database design (RDD) models information and data into a set of tables with rows and columns. Each row of a relation/table represents a record, and each column represents an attribute of data. The Structured Query Language (SQL) is used to manipulate relational databases. The design of a relational database is composed of four stages, where the data are modeled into a set of related tables. The stages are: define relations/attributes, define primary keys, define relationships, and normalization"* [1]
+
+### Database Design [50 Marks]
+
+Apon graduation, you decide to form a small company specialising in the production of independent video game, or computer animation, projects. For this assignment, you are required to model a **simplified** production management tool which represents a subset of the entities related to the development of a single video game, or computer animation, project. 
+
+All video game, or computer animation, projects require the following **core** entities: 
+
+* **Team Member**: describes an individual on the team (e.g. tester, lead artist, manager, 3D modeller) 
+* **Work Item**: describes smallest parcel of work resulting in a testable output (e.g., name, status, assigned to)
+* **Asset**: describes the resource output of work (e.g., type,format,created by)
+* **Library**: describes a collection of available assets
+* **Project**: describes project being produced, timeline, and team involved (e.g. name, members, output, delivery date)
+
+For this assignment you are required to model a database using a relational database modelling technique. This will involve the use of a third-party tool (i.e., Vertabelo) to generate a physical data model of the required database. A physical data model represents relational data objects (e.g., tables, fields, primary and foreign keys), their relationships, and the cardinality of these relationships.[2] Once database modelling is complete, you will then generate an SQL script which will be used to create an SQLite database in R Studio (as shown in class in Week 13). Once the database has been created in R Studio (see class examples), you will then populate the database with data, and execute a number of SQL queries.
+
+During the database modelling phase you will need to decide on the table attributes, data types (i.e., type, length, and precision), and the cardinality (e.g., one-to-one, one-to-many) of the relationship between tables. Your design should consist of no fewer than **five** tables and no more than **ten** tables. Note, not all tables will have relationships and may be **stand-alone** tables with no connection(s) to any other table. A total of **30 marks** will be awarded for the proper modelling of the database tables.
+
+All tables must be normalized to satisfy **Third Normal Form**. Links have been provided in the Recommended Reading section on what 1NF to 3NF require. A total of **20 marks** will be awarded for the proper normalization of the database tables.
+
+In thinking about the core entities, described above, you should add whatever attributes you feel are necessary to reasonably describe the entity. An exact structure for each entity is not prescribed because you are required to think through what is needed and the structure and relationship of any tables required. 
+
+Note, your design is **not** intended to exactly describe the software development lifecycle. Rather, you may think of your design as describing **who**, is doing **what**, to produce what **artefact**, under whose **supervision**, and for what **deadline**. You may have encountered software similar to Adobe ShotGrid [3] and reviewing the product overview video may be useful. 
+
+### Database Setup [5 Marks]
+
+Once you have finalised the physical data model of your database you will then generate the SQL script using the recommended third-party tool. Next, use this script in an R Notebook, along with SQL Chunks (see Week 13 and CA support screencasts) to generate an SQLite database. This is a local database file on your computer's hard drive. The file should be clearly and logically named (e.g. *daie_ca4_data.sqlite*). 
+
+### Database Querying [20 Marks]
+
+Once the database has been created and populated with data, you should then create a second R Notebook to be used to query the data in the database using SQL queries. You are required to demonstrate the following SQL concepts using no fewer than **five** distinct SQL statements:
+
+1. SELECT with WHERE, LIKE, and OR
+2. SELECT with DISTINCT and ORDER BY
+3. Inner Join
+4. Subquery with SELECT
+5. SELECT across a date range
+
+### Part A - Deliverable Requirements 
+
+These steps will result in the generation of the following files:
+
+1. An SQL Script (Vertabelo)
+2. An E-R diagram image (Vertabelo)
+3. An SQLite file (R Studio)
+4. Two R Notebook files containing the R and SQL code to generate and query the database, respectively. 
+
+Each R Notebook will have the following structure:
+
+1. Title (see YAML header)
+2. A 1-2 line subtitle of file contents (see YAML header) 
+3. An embedded E-R diagram (where appropriate)
+4. SQL & R Code
+    + A 1-3 line description of each SQL code chunk
+    + SQL code chunk
+    + R code chunk showing SQL query output
+
+
+## Part B - Linear Regression Analysis [20 Marks]
+
+### Overview
+
+*"Simple linear regression is used to estimate the relationship between two quantitative variables...Linear regression models use a straight line, while logistic and nonlinear regression models use a curved line. Regression allows you to estimate how a dependent variable changes as the independent variable(s) change."* [4]
+
+### Linear Regression Requirement [10 marks]
+
+A survey of gamer preferences and expenditure was conducted across 1000 students. The participants were asked to provide the following information:
+
+
+
+
+Using the survey data provided, you are required to perform linear regression on the data from any pair of appropriate columns. The CSV file contains 1000 records and you are required to perform linear analysis on a random sample (without replacement) of 200 records. The *sample* function in R can be used for the purpose of random sampling. The data has already been cleaned and so no erroneous values are present. The data are available in the CSV file under the CA link in Moodle.
+
+In the R Notebook file, you should clearly identify the **variables** chosen, any **assumptions** made, and any **tests/justifications** for those assumptions. You should then report the statistical **results** of the linear regression and briefly **discuss** the strength of any positive/negative association. This discussion should be limited to a maximum of **200 words**.
+
+
+
+### Visualization Requirements [10 marks]
+
+
+
+### Part B - Deliverable Requirements 
+
+These steps will result in the generation of a single R Notebook file with the following structure:
+
+1. Title (see YAML header)
+2. A 1-2 line subtitle of file contents (see YAML header) 
+3. Statement of Assumptions (clearly **state** any assumptions made with respect to the variables chosen for analysis)
+4. Testing of Assumptions (provide measures, plots and/or justification for your assumptions)
+5. R & SQL Code (using SQL, DPLYR and GGPLOT2)
+    + A 1-3 line description of each R/SQL code chunk
+    + SQL code chunk showing SQL query to remote database
+    + R code chunk showing SQL query results
+    + R code chunk using GGPLOT2 to filter results
+    + R code code calculating linear regression for filtered columns
+    + R code chunk using GGPLOT2 to generate linear regression plot(s)
+
+## Structure, Presentation & Quality
+
+Your R Notebooks should output both the code and any data/plot/table to the rendered document (e.g. HTML, PDF, Word).
+
+A total of **2.5 marks** will be awarded for the clear commenting of any (non-trivial) line of R and SQL code and a clear description of any novel processing and/or user-defined functions.
+
+Next, **2.5 marks** will be awarded if all included graphs/tables are formatted to maximise readability (i.e. main heading, labs, tick spacing and frequency, plot character, and caption).
+
+## Version Control Requirements
+
+You must use a recognised online code repository (e.g., GitHub) and make regular well-named commits to your private repository. A link to your code repo must be included in a README as part of the final submission and you must add your lecturer as a developer to the repository. The repository must be named *2022_DAIE_ICA_StudentInitials1*.
+
+Your grade for this component will depend directly upon the **regularity** of your commits. A development project of this size should consist of a minimum of **5+ distinct commit messages** spread over the lifetime of the development. Committing all your code in one commit, before the deadline, will be interpreted negatively. 
+
+<span style="color: red;">**Any submission made which does not include a repository link will not be graded.**</span>
+
+## Submission Requirements
+
+1. A single **ZIP file** containing your SQL Script (Vertabelo), E-R diagram image (Vertabelo), SQLite database file (R Studio), and a **README** file containing a link to your R source code repository. You may also add these files (i.e., SQL, E-R, and SQLIte) to your repository for convenience. Ensure that **no** changes are made to the repository following the submission deadline. You should create a separate fork for this submission and leave it unchanged after the deadline. Ask your lecturer for details on fork creation.
+2. The assignment must be entirely the work of each student. Students are **not** permitted to share any pseudocode or source code from their solution with any other student in the class.
+3. Students may **not** distribute the source code of their solution to any other student, in any format (i.e., electronic, verbal, or hardcopy transmission).
+4. Plagiarised assignments will receive a mark of **zero**. This also applies to the individual/group allowing their work to be plagiarised. Any plagiarism will be reported to the Head of Department and a report will be added to your permanent academic record. 
+5. Late assignments will **only** be accepted if accompanied by the appropriate medical note. This documentation must be received within 10 working days of the project deadline. The Institute standard penalties for late submission will apply.
+6. Each student **must** complete and **sign** a single assignment cover sheet. Please submit the signed cover sheet, via email, before 5 pm on the Friday of the week of the deadline.
+
+## Recommended Reading
+
+
+* [Recommended Text - OpenIntro Statistics Videos & Slides](https://www.openintro.org/book/os/) 
+* [A Comprehensive Introduction to Working with Databases using R](https://blog.rsquaredacademy.com/working-with-databases-using-r/)
+* [Simple Linear Regression | An Easy Introduction & Examples](https://www.scribbr.com/statistics/simple-linear-regression/)
+* [Linear regression using R programming](https://youtu.be/-mGXnm0fHtI)
+* [Working With SQL Databases From R: Querying SQL Databases Using dplyr](https://youtu.be/RM2azMyo9yI)
+* [Data Manipulation Tools: dplyr -- Pt 3 Intro to the Grammar of Data Manipulation with R](https://youtu.be/Zc_ufg4uW4U)
+* [Fitting and visualizing linear regression models with the ggplot2 R package (CC237)](https://youtu.be/1Vs-ckEI94M)
+* [ggplot for plots and graphs. An introduction to data visualization using R programming](https://youtu.be/HPJn1CMvtmI])
+
+## Additional Resources
+
+The resources below are provided as a mixture of **optional background reading**, technical reference, and useful tools. 
+
+* [YouTube - Riffomonas Project - R Language Tutorials](https://www.youtube.com/c/RiffomonasProject)
+* [Ian Cook | Bridging the Gap between SQL and R | RStudio (2020)](https://youtu.be/JwP5KdWSgqE)
+* [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+* [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+* [Understanding YAML headers](https://zsmith27.github.io/rmarkdown_crash-course/lesson-4-yaml-headers.html)
+* [R Markdown Themes](https://bootswatch.com/)
+* [Harvard referencing quick guide: Citing and referencing material](https://dkit.ie.libguides.com/harvard/citing-referencing)
+
+## References
+
+1. Technopedia (2017) Relational Database Design Available at: https://www.techopedia.com/definition/25113/relational-database-design-rdd (Accessed: 20 December 2022)]
+
+2. IBM (2021) Physical data models Available at: https://www.ibm.com/docs/en/ida/9.1.1?topic=modeling-physical-data-models (Accessed: 20 December 2022)]
+
+3. Adobe ShotGrid (2022) What is ShotGrid? Available at: https://www.autodesk.com/products/shotgrid/overview (Accessed: 22 December 2022)]
+
+4. Rebecca Bevans (2020) Simple Linear Regression | An Easy Introduction & Examples Available at: https://www.scribbr.com/statistics/simple-linear-regression/ (Accessed: 23 December 2022)]
+
+
+
