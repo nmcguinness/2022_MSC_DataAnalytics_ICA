@@ -3,6 +3,8 @@ title: "2022 - MSc - Data Analytics for Immersive Environments - CA4 - RDBMS & L
 author: "Niall McGuinness"
 date: "December 2022"
 output:
+  pdf_document:
+    toc: TRUE
   html_document:
     toc: TRUE
     number_sections: FALSE
@@ -11,8 +13,6 @@ output:
     fig_caption: TRUE
     code_folding: hide
     theme: cerulean
-  pdf_document:
-    toc: TRUE
   word_document:
     toc: TRUE
 subtitle: 'Database design, SQL, and Linear Regression'
